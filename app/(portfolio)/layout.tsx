@@ -37,7 +37,7 @@ export default function RootLayout({
             src="https://cdn.platform.openai.com/deployments/chatkit/chatkit.js"
             strategy="afterInteractive"
           />
-          <SidebarProvider>
+          <SidebarProvider defaultOpen={false}>
             <SidebarInset>{children}</SidebarInset>
             <AppSidebar side="right" />
             {/* <FloatingDock /> */}
