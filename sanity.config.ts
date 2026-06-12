@@ -14,6 +14,7 @@ import {schema} from './sanity/schemaTypes'
 import {structure} from './sanity/structure'
 
 export default defineConfig({
+  title: 'portfolio',
   basePath: '/studio',
   projectId,
   dataset,
@@ -23,6 +24,6 @@ export default defineConfig({
     structureTool({structure}),
     // Vision is for querying with GROQ from inside the Studio
     // https://www.sanity.io/docs/the-vision-plugin
-    visionTool({defaultApiVersion: apiVersion}),
+    visionTool({title: 'Grock Query Tool'}),
   ],
 })
