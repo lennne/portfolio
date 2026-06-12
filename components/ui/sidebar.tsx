@@ -53,7 +53,7 @@ function useSidebar() {
 }
 
 function SidebarProvider({
-  defaultOpen = true,
+  defaultOpen = false,
   open: openProp,
   onOpenChange: setOpenProp,
   className,
@@ -281,7 +281,7 @@ function SidebarRail({ className, ...props }: React.ComponentProps<"button">) {
 
   return (
     <button
-      data-sidebar="rail"
+      data-sidebar="rail" 
       data-slot="sidebar-rail"
       aria-label="Toggle Sidebar"
       tabIndex={-1}
