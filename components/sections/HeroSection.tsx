@@ -1,11 +1,10 @@
-import { sanityFetch } from "@/sanity/lib/live";
-import { defineQuery } from "next-sanity";
-import { BackgroundRippleEffect } from "../ui/background-ripple-effect";
-import { LayoutTextFlip } from "../ui/layout-text-flip";
 import Link from "next/link";
+import { defineQuery } from "next-sanity";
+import { BackgroundRippleEffect } from "@/components/ui/background-ripple-effect";
+import { LayoutTextFlip } from "@/components/ui/layout-text-flip";
 import { urlFor } from "@/sanity/lib/image";
-import { ProfileImage } from "../ProfileImage";
-
+import { sanityFetch } from "@/sanity/lib/live";
+import { ProfileImage } from "./ProfileImage";
 
 const HERO_QUERY = defineQuery(`*[_id == "singleton-profile"][0]{
   firstName,
@@ -24,14 +23,15 @@ const HERO_QUERY = defineQuery(`*[_id == "singleton-profile"][0]{
   profileImage
 }`);
 
-export async function HeroSection(){
-    const { data: profile } = await sanityFetch({ query: HERO_QUERY })
+export async function HeroSection() {
+  const { data: profile } = await sanityFetch({ query: HERO_QUERY });
 
-    if (!profile){
-        return
-    }
-    return(
-        <section
+  if (!profile) {
+    return null;
+  }
+
+  return (
+    <section
       id="home"
       className="relative min-h-screen flex items-center justify-center px-6 py-20 overflow-hidden"
     >
@@ -43,7 +43,7 @@ export async function HeroSection(){
           <div className="grid grid-cols-1 @3xl:grid-cols-2 gap-8 @lg:gap-12 items-center">
             {/* Text Content */}
             <div className="@container/hero space-y-4 @md/hero:space-y-6">
-              <h1 className=" text-4xl @md/hero:text-5xl @lg/hero:text-7xl font-bold tracking-tight">
+              <h1 className="text-4xl @md/hero:text-5xl @lg/hero:text-7xl font-bold tracking-tight">
                 {profile.firstName}{" "}
                 <span className="text-primary">{profile.lastName}</span>
               </h1>
@@ -54,10 +54,10 @@ export async function HeroSection(){
                   text={profile.headlineStaticText}
                   words={profile.headlineAnimatedWords}
                   duration={profile.headlineAnimationDuration || 3000}
-                  className=" text-xl @md/hero:text-2xl @lg/hero:text-md text-muted-foreground font-medium"
+                  className="text-xl @md/hero:text-2xl @lg/hero:text-3xl text-muted-foreground font-medium"
                 />
               ) : (
-                <p className="text-xl = @md/hero:text-2xl @lg/hero:text-md text-muted-foreground font-medium">
+                <p className="text-xl @md/hero:text-2xl @lg/hero:text-3xl text-muted-foreground font-medium">
                   {profile.headline}
                 </p>
               )}
@@ -147,5 +147,5 @@ export async function HeroSection(){
         </div>
       </div>
     </section>
-    )
+  );
 }

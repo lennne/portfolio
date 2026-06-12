@@ -14,5 +14,9 @@ export default defineCliConfig({
         schema: "schema.json", // path to your schema file, generated with 'sanity schema extract' command
         generates: "./sanity.types.ts", // path to the output file for generated type definitions
         overloadClientMethods: true, // set to false to disable automatic overloading the sanity client
+        
     },
+      deployment: {
+    appId: 'd42lf85pp6pic62uny1z6jt9',
+  },
 })

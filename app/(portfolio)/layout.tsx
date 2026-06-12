@@ -6,6 +6,7 @@ import { SanityLive } from "@/sanity/lib/live";
 import { SidebarInset, SidebarProvider } from "@/components/ui/sidebar";
 import { AppSidebar } from "@/components/app-sidebar";
 import { TooltipProvider } from "@/components/ui/tooltip";
+import SidebarToggle from "@/components/SidebarToggle";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -35,6 +36,8 @@ export default function RootLayout({
             <SidebarProvider>
               <SidebarInset>{children}</SidebarInset>
               <AppSidebar side="right" />
+              {/* <FloatingDock /> */}
+              <SidebarToggle />
             </SidebarProvider>
 
           <SanityLive />
