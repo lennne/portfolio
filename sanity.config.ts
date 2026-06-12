@@ -12,9 +12,12 @@ import {structureTool} from 'sanity/structure'
 import {apiVersion, dataset, projectId} from './sanity/env'
 import {schema} from './sanity/schemaTypes'
 import {structure} from './sanity/structure'
+import { RocketIcon } from 'lucide-react'
 
 export default defineConfig({
   title: 'portfolio',
+  subTitle: 'Content Management System',
+  icon: RocketIcon,
   basePath: '/studio',
   projectId,
   dataset,
@@ -24,6 +27,6 @@ export default defineConfig({
     structureTool({structure}),
     // Vision is for querying with GROQ from inside the Studio
     // https://www.sanity.io/docs/the-vision-plugin
-    visionTool({title: 'Grock Query Tool'}),
+    visionTool({defaultApiVersion: apiVersion, title: 'GROQ'}),
   ],
 })
