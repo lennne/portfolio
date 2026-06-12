@@ -4,6 +4,7 @@ import { BackgroundRippleEffect } from "../ui/background-ripple-effect";
 import { LayoutTextFlip } from "../ui/layout-text-flip";
 import Link from "next/link";
 import { urlFor } from "@/sanity/lib/image";
+import { ProfileImage } from "../ProfileImage";
 
 
 const HERO_QUERY = defineQuery(`*[_id == "singleton-profile"][0]{
@@ -132,7 +133,7 @@ export async function HeroSection(){
             </div>
 
             {/* Profile Image */}
-            {/* {profile.profileImage && (
+            {profile.profileImage && (
               <ProfileImage
                 imageUrl={urlFor(profile.profileImage)
                   .width(600)
@@ -141,7 +142,7 @@ export async function HeroSection(){
                 firstName={profile.firstName || ""}
                 lastName={profile.lastName || ""}
               />
-            )} */}
+            )}
           </div>
         </div>
       </div>

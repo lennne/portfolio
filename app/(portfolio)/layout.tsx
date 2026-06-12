@@ -3,6 +3,9 @@ import { Geist, Geist_Mono } from "next/font/google";
 import "../globals.css";
 import { ClerkProvider } from "@clerk/nextjs";
 import { SanityLive } from "@/sanity/lib/live";
+import { SidebarInset, SidebarProvider } from "@/components/ui/sidebar";
+import { AppSidebar } from "@/components/app-sidebar";
+import { TooltipProvider } from "@/components/ui/tooltip";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -26,14 +29,16 @@ export default function RootLayout({
 }>) {
   return (
     <ClerkProvider>
-      <html
-        lang="en"
-        
-      >
+      <html lang="en">
         <body className={`${geistSans.className} antialiased`}>
-          {children}
+
+            <SidebarProvider>
+              <SidebarInset>{children}</SidebarInset>
+              <AppSidebar side="right" />
+            </SidebarProvider>
+
           <SanityLive />
-          </body>
+        </body>
       </html>
     </ClerkProvider>
   );
