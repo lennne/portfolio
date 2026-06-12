@@ -1128,6 +1128,31 @@ export type HERO_QUERY_RESULT =
     }
   | null;
 
+// Source: components/sections/SkillsSection.tsx
+// Variable: SKILLS_QUERY
+// Query: *[_type == "skill"] | order(category asc, order asc){  name,  category,  proficiency,  percentage,  yearsOfExperience,  color}
+export type SKILLS_QUERY_RESULT = Array<{
+  name: string | null;
+  category:
+    | "ai-ml"
+    | "backend"
+    | "cloud"
+    | "database"
+    | "design"
+    | "devops"
+    | "frontend"
+    | "mobile"
+    | "other"
+    | "soft-skills"
+    | "testing"
+    | "tools"
+    | null;
+  proficiency: "advanced" | "beginner" | "expert" | "intermediate" | null;
+  percentage: number | null;
+  yearsOfExperience: number | null;
+  color: string | null;
+}>;
+
 // Source: components/sections/TestimonialsSection.tsx
 // Variable: TESTIMONIALS_QUERY
 // Query: *[_type == "testimonial" && featured == true] | order(order asc){  _id,  name,  position,  company,  testimonial,  rating,  date,  avatar,  companyLogo,  linkedinUrl}
@@ -1164,6 +1189,7 @@ declare module "@sanity/client" {
     '*[_id == "singleton-profile"][0]{\n    _id,\n    _type,\n    _createdAt,\n    _updatedAt,\n    _rev,\n    firstName,\n    lastName,\n    headline,\n    shortBio,\n    email,\n    phone,\n    location,\n    availability,\n    socialLinks,\n    yearsOfExperience,\n    profileImage\n  }': CHAT_PROFILE_QUERY_RESULT;
     '*[_id == "singleton-profile"][0]{\n  firstName,\n  lastName,\n  fullBio,\n  yearsOfExperience,\n  stats,\n  email,\n  phone,\n  location\n}': ABOUT_QUERY_RESULT;
     '*[_id == "singleton-profile"][0]{\n  firstName,\n  lastName,\n  headline,\n  headlineStaticText,\n  headlineAnimatedWords,\n  headlineAnimationDuration,\n  shortBio,\n  email,\n  phone,\n  location,\n  availability,\n  socialLinks,\n  yearsOfExperience,\n  profileImage\n}': HERO_QUERY_RESULT;
+    '*[_type == "skill"] | order(category asc, order asc){\n  name,\n  category,\n  proficiency,\n  percentage,\n  yearsOfExperience,\n  color\n}': SKILLS_QUERY_RESULT;
     '*[_type == "testimonial" && featured == true] | order(order asc){\n  _id,\n  name,\n  position,\n  company,\n  testimonial,\n  rating,\n  date,\n  avatar,\n  companyLogo,\n  linkedinUrl\n}': TESTIMONIALS_QUERY_RESULT;
   }
 }
